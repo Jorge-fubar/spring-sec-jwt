@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<configuration debug="true">
+    <appender name="consoleAppender" class="ch.qos.logback.core.ConsoleAppender">
+        <encoder>
+            <pattern>%d{HH:mm:ss.SSS} [%thread] %-5level %logger{5} - %msg%n</pattern>
+        </encoder>
+    </appender>
+
+    <logger name="com.datapoint" level="DEBUG" additivity="false">
+        <appender-ref ref="consoleAppender"/>
+    </logger>
+
+    <logger name="org.springframework" level="WARN" additivity="false">
+        <appender-ref ref="consoleAppender"/>
+    </logger>
+
+    <logger name="org.springframework.web" level="WARN" additivity="false">
+        <appender-ref ref="consoleAppender"/>
+    </logger>
+
+    <logger name="org.hibernate" level="WARN" additivity="false">
+        <appender-ref ref="consoleAppender"/>
+    </logger>
+
+    <!-- Use DEBUG to see SQL statements -->
+    <logger name="org.hibernate.SQL" level="WARN" additivity="false">
+        <appender-ref ref="consoleAppender"/>
+    </logger>
+    <!-- Use TRACE to see SQL param values -->
+    <logger name="org.hibernate.type" level="WARN" additivity="false">
+        <appender-ref ref="consoleAppender"/>
+    </logger>
+
+    <root level="WARN">
+        <appender-ref ref="consoleAppender"/>
+    </root>
+
+
+</configuration>
