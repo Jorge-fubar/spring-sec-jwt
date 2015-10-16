@@ -16,9 +16,6 @@ public class UserDetailsImpl implements UserDetails {
     @Getter
     @Setter
     private LoginUser loginUser;
-    @Getter
-    @Setter
-    private String tenant;
     private List<GrantedAuthority> authorities;
 
     public UserDetailsImpl(LoginUser loginUser, List<GrantedAuthority> authorities) {

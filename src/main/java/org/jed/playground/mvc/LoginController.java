@@ -34,16 +34,6 @@ public class LoginController {
     @Autowired
     private TokenAuthenticationService tokenAuthenticationService;
 
-    @RequestMapping(method = RequestMethod.GET)
-    @ResponseStatus(value = HttpStatus.OK)
-    public Greeting find() {
-        Greeting greeting = new Greeting();
-        greeting.setSummary("summary");
-        greeting.setCreated(Calendar.getInstance());
-        greeting.setText("text of the greeting");
-        return greeting;
-    }
-
     @RequestMapping(method = RequestMethod.POST)
     @ResponseBody
     public ResponseEntity<String> login(@RequestBody LoginUser loginUser) {

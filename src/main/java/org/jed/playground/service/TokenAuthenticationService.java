@@ -55,13 +55,13 @@ public class TokenAuthenticationService {
             return false;
         }
         UserDetails userDetails = userDetailsService.loadUserByUsername(username);
-        String userDetailsTenant = ((UserDetailsImpl) userDetails).getTenant();
-        if (tenant.equals(userDetailsTenant)) {
-            log.warn(String.format("User \"%s\" trying to access to tenant \"%s\" instead of its own tenant \"%s\". " +
-                    "Request unauthorized", userDetails.getUsername(), tenant, userDetailsTenant));
-            return false;
+        String userDetailsTenant = ((UserDetailsImpl) userDetails).getLoginUser().getTenant();
+        if (StringUtils.equals(tenant,userDetailsTenant)) {
+            return true;
         }
-        return true;
+        log.warn(String.format("User \"%s\" trying to access to tenant \"%s\" instead of its own tenant \"%s\". " +
+                "Request unauthorized", userDetails.getUsername(), tenant, userDetailsTenant));
+        return false;
     }
 
     private static final String generateSecretKey() {
